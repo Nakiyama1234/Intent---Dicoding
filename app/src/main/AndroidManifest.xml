@@ -21,6 +21,7 @@
         <activity
             android:name=".MoveActivity"
             android:exported="false" />
+<!--        Push Doank Bro-->
         <activity
             android:name=".MainActivity"
             android:exported="true">
