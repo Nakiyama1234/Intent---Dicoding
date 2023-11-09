@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Explicit Intent</string>
     <string name="move_activity">Move_Activity</string>
+    <string name="move_with_data">Move With Data</string>
+    <string name="data_recived">Data Recived</string>
+    <string name="move_with_object">Move With Object</string>
+    <string name="object_recived">Object Recived</string>
 </resources>
