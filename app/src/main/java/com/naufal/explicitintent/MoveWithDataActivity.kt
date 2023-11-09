@@ -1,7 +1,7 @@
 package com.naufal.explicitintent
 
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+//import android.os.Bundle
 import android.widget.TextView
 
 class MoveWithDataActivity : AppCompatActivity() {
