@@ -1,14 +1,30 @@
 package com.naufal.explicitintent
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
+    private val resultLauncher = this.registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == MoveForResultActivity.RESULT_CODE && result.data != null) {
+            val selectedValue =
+                result.data?.getIntExtra(MoveForResultActivity.EXTRA_SELECTED_VALUE, 0)
+            tvResult.text = "Hasil : $selectedValue"
+        }
+    }
 
+
+
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -24,6 +40,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         val btnDialNumber: Button = findViewById(R.id.btn_dial_number)
         btnDialNumber.setOnClickListener(this)
+
+        val btnMoveForResult:Button = findViewById(R.id.btn_move_rsl)
+        btnMoveForResult.setOnClickListener(this)
+
+        tvResult = findViewById(R.id.tv_result)
+
     }
 
 
@@ -53,6 +75,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 moveWithObjectIntent.putExtra(MoveWithObjectActivity.EXTRA_PERSON, person)
                 startActivity(moveWithObjectIntent)
             }
+
             R.id.btn_dial_number -> {
                 val phoneNumber = "082134189255"
                 val dialNumberIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
