@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
+    private lateinit var tvResult: TextView
     private val resultLauncher = this.registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
